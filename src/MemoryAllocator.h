@@ -6,6 +6,10 @@
 
 typedef struct MemoryAllocator MemoryAllocator;
 
+#define ALLOCATE(_memoryAllocator, _size) MemoryAllocator_allocate(_memoryAllocator, _size, __FILE__, __LINE__)
+#define REALLOCATE(_memoryAllocator, _pointer, _oldSize, _newSize) MemoryAllocator_reallocate(_memoryAllocator, _pointer, _oldSize, _newSize, __FILE__, __LINE__)
+#define DEALLOCATE(_memoryAllocator, _pointer, _size) MemoryAllocator_deallocate(_memoryAllocator, _pointer, _size, __FILE__, __LINE__)
+
 MemoryAllocator* MemoryAllocator_create();
 void MemoryAllocator_delete(MemoryAllocator*);
 const size_t MemoryAllocator_getMemoryUsage(const MemoryAllocator*);
